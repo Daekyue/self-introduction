@@ -1,3 +1,84 @@
+/* ---------- 기초 설정 ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  /* 전체 배경이나 폰트 설정 */
+  background-color: #f5f5f5; 
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+}
+
+/* ---------- 전체 레이아웃 ---------- */
+.portfolio-container {
+  /* 화면을 3분할: 왼쪽(프로필), 가운데(타임라인), 오른쪽(카드 섹션들) */
+  display: grid;
+  grid-template-columns: 300px 1fr 1.2fr;
+  gap: 20px;
+
+  /* 가운데 정렬과 폭 제한 제거 */
+  /* max-width: 1400px; */
+  /* margin: 0 auto; */
+
+  /* 화면을 꽉 채우기 위해 100% 폭, 100% 높이(또는 그 이상) 사용 */
+  width: 100vw;
+  min-height: 100vh;
+
+  /* 원하는 만큼 안쪽 여백 */
+  padding: 20px;
+}
+
+/* ---------- 왼쪽 프로필 영역 ---------- */
+.profile {
+  background-color: #000; /* 검정색 배경 */
+  color: #fff;            /* 글씨는 흰색 */
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;     
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 프로필 상단 (인스타 스타일 박스) */
+.profile-top {
+  background-color: #111;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* 실제 프로필 이미지 */
+.insta-profile-image {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 인스타 정보 컨테이너 */
+.insta-info {
+  margin-top: 12px;
+}
+
+.insta-username {
+  margin-top: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.insta-quote {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
 /* 아이콘 행 배치 */
 .icon-row {
   display: flex;
@@ -12,14 +93,170 @@
   cursor: pointer;
 }
 
-/* 인스타그램 ID */
+/* 인스타그램 ID (토글로 나타나는 부분) */
 .instagram-id {
   margin-top: 6px;
   font-size: 0.9rem;
-  color: #fff; /* 배경이 어둡다면 흰색 등으로 조정 */
+  color: #fff; 
 }
 
-/* 모달 스타일 - 기존과 동일하되 Kakao 모달에도 재사용 */
+/* 프로필 네비게이션: MY PROFILE, MBTI, 해시태그 */
+.profile-nav {
+  margin-top: 10px;
+}
+.profile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.profile-nav ul li {
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.profile-nav ul li:hover {
+  color: #ffcc00; /* 호버 시 포인트 색상 (예시) */
+}
+
+/* MY PROFILE 클릭 시 열리는 디테일 섹션 */
+.profile-detail {
+  margin-top: 12px;
+  background-color: #222;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* ---------- 가운데 타임라인 영역 ---------- */
+.timeline {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.timeline h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* 타임라인 리스트 */
+.timeline-list .timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+/* 원형 점 표현(타임라인 아이콘) */
+.timeline-list .timeline-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #333;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* 타임라인 아래쪽 추가 정보 */
+.extra-info {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+/* 배터리 아이콘 예시 */
+.battery-status {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.battery {
+  width: 20px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+.battery-lv1 {
+  background-color: #ff4136; /* 빨간색 */
+}
+.battery-lv2 {
+  background-color: #ffdc00; /* 노란색 */
+}
+.battery-lv3 {
+  background-color: #2ecc40; /* 초록색 */
+}
+
+/* ---------- 오른쪽 영역 (Project, Tech Stack, etc.) ---------- */
+.right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 각 섹션(박스) 공통 스타일 */
+.right-content section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.right-content section h3 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* 프로젝트 목록 */
+.project-list ol {
+  padding-left: 20px;
+  margin: 0;
+  list-style: decimal;
+}
+
+.project-list li {
+  margin-bottom: 4px;
+}
+
+/* 기술 스택 아이콘 영역 */
+.stack-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.stack-icons img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* 2학기 목표 */
+.goal ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* 사진 갤러리 */
+.photo-gallery .photo-grid {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.photo-gallery .photo-grid img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ---------- 모달 (인스타 ID / 카카오톡 QR 등) ---------- */
 .modal-overlay {
   position: fixed;
   top: 0;
